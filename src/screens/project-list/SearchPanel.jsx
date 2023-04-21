@@ -1,21 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
-export const SearchPanel = () => {
-  const [formValues,setFormValues]=useState({
-    projectName: '',
-    personId:''
-  })
-  const [users, setUsers]=useState([])
-  const [projectList,setProjectList]=useState([])
-
-  useEffect(() => {
-    fetch('').then(async (response) => {
-      if (response.ok) {
-        setProjectList(await response.json())
-      }
-    })
-  },[formValues])
-
+export const SearchPanel = ({users,formValues,setFormValues}) => {
+  
   return (
     <form>
       <input 
