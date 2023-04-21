@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 export const SearchPanel = ({users,formValues,setFormValues}) => {
   
@@ -6,11 +6,11 @@ export const SearchPanel = ({users,formValues,setFormValues}) => {
     <form>
       <input 
         placeholder='Project Name' 
-        value={formValues.projectName} 
+        value={formValues.name} 
         onChange={(e)=>{ console.log('e', e) 
         return setFormValues({
           ...formValues,
-          projectName: e.target.value
+          name: e.target.value
         })}}></input>
       <select
         value={formValues.personId} 
@@ -20,7 +20,7 @@ export const SearchPanel = ({users,formValues,setFormValues}) => {
         })}}>
         <option value=''>Manager</option>
         {
-          users.map((user) => {return <option value={user.id}>{user.name}</option> })
+          users.map((user) => {return <option key={user.id} value={user.id}>{user.name}</option> })
         }
       </select>
     </form>

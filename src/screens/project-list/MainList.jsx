@@ -13,7 +13,7 @@ export const MainList = ({projectList,users}) => {
         {
           projectList.map((project) => {
             return (
-              <tr>
+              <tr key={project.id}>
                 <td>{project.name}</td>
                 <td>{users.find(user => user.id === project.personId)?.name || 'N/A'}</td>
               </tr>
