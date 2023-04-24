@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export const isFalsy = (value: unknown): boolean =>
   value === 0 ? false : !value;
@@ -31,4 +31,20 @@ export const useDebounce = <T,>(value: T, delay?: number) => {
     return () => clearTimeout(timeout);
   }, [value, delay]);
   return debounceValue;
+};
+
+export const useArray = <T,>(initialArray: T[]) => {
+  const [arr, setArr] = useState(initialArray);
+
+  return {
+    arr,
+    setArr,
+    add: (item: T) => setArr([...arr, item]),
+    removeIndex: (index: number) => {
+      const arrCopy = [...arr];
+      arrCopy.splice(index, 1);
+      setArr(arrCopy);
+    },
+    clear: () => setArr([]),
+  };
 };
