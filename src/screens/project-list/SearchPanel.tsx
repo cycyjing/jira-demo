@@ -16,7 +16,7 @@ interface SearchPanelProps {
   setFormValues: (formValues: SearchPanelProps["formValues"]) => void;
 }
 
-export const SearchPanel = ({
+const SearchPanel = ({
   users,
   formValues,
   setFormValues,
@@ -54,3 +54,5 @@ export const SearchPanel = ({
     </form>
   );
 };
+
+export default SearchPanel;

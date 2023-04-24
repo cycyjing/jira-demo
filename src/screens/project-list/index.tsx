@@ -1,12 +1,12 @@
 import React, { useState, useEffect, Fragment } from "react";
 import qs from "qs";
-import { SearchPanel } from "./SearchPanel";
-import { MainList } from "./MainList";
+import SearchPanel from "./SearchPanel";
+import MainList from "./MainList";
 import { cleanObject, useDebounce, useMount } from "utils";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
-export const ProjectListScreen = () => {
+const ProjectListScreen = () => {
   const [users, setUsers] = useState([]);
   const [formValues, setFormValues] = useState({
     name: "",
@@ -45,3 +45,5 @@ export const ProjectListScreen = () => {
     </Fragment>
   );
 };
+
+export default ProjectListScreen;

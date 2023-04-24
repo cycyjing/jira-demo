@@ -13,7 +13,7 @@ interface MainListProps {
   users: User[];
 }
 
-export const MainList = ({ projectList, users }: MainListProps) => {
+const MainList = ({ projectList, users }: MainListProps) => {
   return (
     <table style={{ margin: "auto", border: "2px solid" }}>
       <thead>
@@ -38,3 +38,5 @@ export const MainList = ({ projectList, users }: MainListProps) => {
     </table>
   );
 };
+
+export default MainList;
