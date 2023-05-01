@@ -9,7 +9,7 @@ export const handleUserResponse = ({ user }: { user: User }) => {
 };
 
 export const register = (data: { username: string; password: string }) => {
-  fetch(`${apiUrl}/register`, {
+  return fetch(`${apiUrl}/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -39,11 +39,13 @@ export const asyncRegister = async (data: {
 
   if (fetchRes.ok) {
     return handleUserResponse(await fetchRes.json());
+  } else {
+    return Promise.reject(await fetchRes.json());
   }
 };
 
 export const login = (data: { username: string; password: string }) => {
-  fetch(`${apiUrl}/login`, {
+  return fetch(`${apiUrl}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -52,8 +54,11 @@ export const login = (data: { username: string; password: string }) => {
   }).then(async (response) => {
     if (response.ok) {
       return handleUserResponse(await response.json());
+    } else {
+      return Promise.reject(await response.json());
     }
   });
 };
 
-export const logout = () => window.localStorage.removeItem(localStorageKey);
+export const logout = async () =>
+  window.localStorage.removeItem(localStorageKey);
