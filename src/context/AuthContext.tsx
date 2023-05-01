@@ -7,6 +7,7 @@ import React, {
 import * as auth from "auth-provider";
 import { User } from "prototype";
 
+// 创建可以全局使用的状态
 const AuthContext = React.createContext<
   | {
       user: User | null;
@@ -34,7 +35,12 @@ export const AuthProvider: FunctionComponent<{ children: ReactNode }> = ({
   const login = (form: AuthForm) => auth.login(form).then(setUser);
   const logout = () => auth.logout().then(() => setUser(null));
 
-  return <AuthContext.Provider value={{ user, register, login, logout }} />;
+  return (
+    <AuthContext.Provider
+      children={children}
+      value={{ user, register, login, logout }}
+    />
+  );
 };
 
 export const useAuth = () => {
