@@ -1,12 +1,14 @@
 import React, { useState, useEffect, Fragment } from "react";
 import qs from "qs";
-import SearchPanel from "./SearchPanel";
-import MainList from "./MainList";
+import SearchPanel from "./search-panel";
+import MainList from "./main-list";
 import { cleanObject, useDebounce, useMount } from "utils";
+import { useAuth } from "context/auth-context";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
 const ProjectListScreen = () => {
+  const { logout } = useAuth();
   const [users, setUsers] = useState([]);
   const [formValues, setFormValues] = useState({
     name: "",
@@ -36,6 +38,7 @@ const ProjectListScreen = () => {
 
   return (
     <Fragment>
+      <button onClick={logout}>Logout</button>
       <SearchPanel
         users={users}
         formValues={formValues}

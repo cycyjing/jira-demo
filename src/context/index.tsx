@@ -1,6 +1,6 @@
 // all custom providers
 import React, { ReactNode } from "react";
-import { AuthProvider } from "./AuthContext";
+import { AuthProvider } from "./auth-context";
 
 const AppProviders = ({ children }: { children: ReactNode }) => {
   return <AuthProvider>{children}</AuthProvider>;

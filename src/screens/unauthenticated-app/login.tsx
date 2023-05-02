@@ -1,10 +1,9 @@
 import React, { FormEvent } from "react";
 import { useAuth } from "context/auth-context";
 
-const LoginScreen = () => {
-  const { login, user } = useAuth();
-
-  const submitHandle = (e: FormEvent<HTMLFormElement>) => {
+const Login = () => {
+  const { login } = useAuth();
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const username = (e.currentTarget.elements[0] as HTMLInputElement).value;
     const password = (e.currentTarget.elements[1] as HTMLInputElement).value;
@@ -12,11 +11,9 @@ const LoginScreen = () => {
   };
 
   return (
-    <form onSubmit={submitHandle}>
-      success! {user?.name}
-      <br />
+    <form onSubmit={handleSubmit}>
       <label htmlFor="username">Username</label>
-      <input type="file" id="username" />
+      <input type="text" id="username" />
       <br />
       <br />
       <label htmlFor="password">Password</label>
@@ -28,4 +25,4 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default Login;
