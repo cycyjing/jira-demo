@@ -16,7 +16,6 @@ const ProjectListScreen = () => {
   const debounceFormValues = useDebounce(formValues, 200);
   const [projectList, setProjectList] = useState([]);
   const client = useHttp();
-  const apiUrl = process.env.REACT_APP_API_URL;
 
   useMount(() => {
     client("users").then(setUsers);

@@ -6,7 +6,19 @@ import React, {
 } from "react";
 import * as auth from "auth-provider";
 import { User } from "prototype";
+import { http } from "utils/http";
+import { useMount } from "utils";
 
+const bootstrapUser = async () => {
+  let user = null;
+  const token = auth.getToken;
+  if (token) {
+    const data = await http("me", { token });
+    console.log("data", data);
+    user = data.user;
+  }
+  return user;
+};
 // 创建可以全局使用的状态
 const AuthContext = React.createContext<
   | {
@@ -30,10 +42,15 @@ export const AuthProvider: FunctionComponent<{ children: ReactNode }> = ({
   const [user, setUser] = useState<User | null>(null);
 
   // point free
-  const register = (form: AuthForm) => auth.register(form).then(setUser);
-  // const register = (form:AuthForm) => auth.asyncRegister(form).then(user=>setUser(user))
+  // const register = (form: AuthForm) => auth.register(form).then(setUser);
+  const register = (form: AuthForm) =>
+    auth.asyncRegister(form).then((user) => setUser(user));
   const login = (form: AuthForm) => auth.login(form).then(setUser);
   const logout = () => auth.logout().then(() => setUser(null));
+
+  useMount(() => {
+    bootstrapUser().then(setUser);
+  });
 
   return (
     <AuthContext.Provider
