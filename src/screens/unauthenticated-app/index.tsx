@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Card, Button } from "antd";
 import Login from "./login";
 import Register from "./register";
 
@@ -6,12 +7,12 @@ const UnauthorizedApp = () => {
   const [isRegister, setIsRegister] = useState(false);
 
   return (
-    <div>
+    <Card>
       {isRegister ? <Register /> : <Login />}
-      <button onClick={() => setIsRegister(!isRegister)}>
+      <Button onClick={() => setIsRegister(!isRegister)}>
         Jump to {isRegister ? "Login" : "Register"}
-      </button>
-    </div>
+      </Button>
+    </Card>
   );
 };
 

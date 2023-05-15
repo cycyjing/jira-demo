@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react";
 import qs from "qs";
+import { Button } from "antd";
 import SearchPanel from "./search-panel";
 import MainList from "./main-list";
 import { cleanObject, useDebounce, useMount } from "utils";
@@ -38,13 +39,14 @@ const ProjectListScreen = () => {
 
   return (
     <Fragment>
-      <button onClick={logout}>Logout</button>
+      <Button type="primary" onClick={logout}>
+        Logout
+      </Button>
       <SearchPanel
         users={users}
         formValues={formValues}
         setFormValues={setFormValues}
       />
-      <br />
       <MainList projectList={projectList} users={users} />
     </Fragment>
   );

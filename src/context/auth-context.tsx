@@ -5,7 +5,7 @@ import React, {
   useState,
 } from "react";
 import * as auth from "auth-provider";
-import { User } from "prototype";
+import { User } from "prototypes";
 import { http } from "utils/http";
 import { useMount } from "utils";
 

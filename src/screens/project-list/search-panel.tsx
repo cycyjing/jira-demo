@@ -1,5 +1,6 @@
 import React from "react";
-import { User } from "prototype";
+import { Form, Input, Select } from "antd";
+import { User } from "prototypes";
 
 interface SearchPanelProps {
   users: User[];
@@ -16,8 +17,8 @@ const SearchPanel = ({
   setFormValues,
 }: SearchPanelProps) => {
   return (
-    <form>
-      <input
+    <Form>
+      <Input
         placeholder="Project Name"
         value={formValues.name}
         onChange={(e) => {
@@ -26,26 +27,26 @@ const SearchPanel = ({
             name: e.target.value,
           });
         }}
-      ></input>
-      <select
+      ></Input>
+      <Select
         value={formValues.personId}
-        onChange={(e) => {
+        onChange={(value) => {
           return setFormValues({
             ...formValues,
-            personId: e.target.value,
+            personId: value,
           });
         }}
       >
-        <option value="">Manager</option>
+        <Select.Option value="">Manager</Select.Option>
         {users.map((user) => {
           return (
-            <option key={user.id} value={user.id}>
+            <Select.Option key={user.id} value={user.id}>
               {user.name}
-            </option>
+            </Select.Option>
           );
         })}
-      </select>
-    </form>
+      </Select>
+    </Form>
   );
 };
 

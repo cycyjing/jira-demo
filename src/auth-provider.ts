@@ -1,4 +1,4 @@
-import { User } from "prototype";
+import { User } from "prototypes";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 const localStorageKey = "__auth_provider_token__";
