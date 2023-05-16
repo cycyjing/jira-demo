@@ -1,5 +1,6 @@
 import React, { FormEvent } from "react";
 import { Form, Input, Button } from "antd";
+import { LongButton } from ".";
 import { useAuth } from "context/auth-context";
 
 const Login = () => {
@@ -30,9 +31,9 @@ const Login = () => {
       </Form.Item>
 
       <Form.Item>
-        <Button htmlType="submit" type="primary">
+        <LongButton htmlType="submit" type="primary">
           Login
-        </Button>
+        </LongButton>
       </Form.Item>
     </Form>
   );
